@@ -1,21 +1,32 @@
 makerbit.connectIrSenderLed(AnalogPin.P2)
 pins.setPull(DigitalPin.P0, PinPullMode.PullDown)
+basic.showIcon(IconNames.Heart)
 basic.forever(function () {
     if (pins.digitalReadPin(DigitalPin.P0) == 1) {
         pins.digitalWritePin(DigitalPin.P1, 1)
         makerbit.sendIrDatagram("0x08F71EE1")
         basic.pause(100)
         pins.digitalWritePin(DigitalPin.P1, 0)
-        for (let Y = 0; Y <= 4; Y++) {
-            for (let X = 0; X <= 4; X++) {
-                led.unplot(X, 4 - Y)
-            }
-        }
-        for (let Y = 0; Y <= 4; Y++) {
-            for (let X = 0; X <= 4; X++) {
-                led.plot(X, 4 - Y)
-            }
-            basic.pause(100)
-        }
+        basic.clearScreen()
+        led.plot(2, 4)
+        basic.pause(100)
+        led.plot(1, 3)
+        led.plot(2, 3)
+        led.plot(3, 3)
+        basic.pause(100)
+        led.plot(0, 2)
+        led.plot(1, 2)
+        led.plot(2, 2)
+        led.plot(3, 2)
+        led.plot(4, 2)
+        basic.pause(100)
+        led.plot(0, 1)
+        led.plot(1, 1)
+        led.plot(2, 1)
+        led.plot(3, 1)
+        led.plot(4, 1)
+        basic.pause(100)
+        led.plot(1, 0)
+        led.plot(3, 0)
     }
 })
